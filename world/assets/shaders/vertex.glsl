@@ -123,9 +123,11 @@ float fbm(vec3 x) {
 }
 
 void main() {
-  float displacement = 16.0* fbm( 0.07 * position + time );
+  float displacement = 20.0* fbm( 0.04 * position + time );
   vUv = uv;
   vNormal = normal;
   vec3 newPosition = position + normal * displacement;
+  //displacement = 16.0*cnoise(0.01*newPosition+time);
+  //newPosition = newPosition + normal * displacement;
   gl_Position = projectionMatrix * modelViewMatrix * vec4( newPosition, 1.0 );
 }
